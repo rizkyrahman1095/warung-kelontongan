@@ -9,14 +9,19 @@ import com.enigma.tokonyadia.security.JwtUtils;
 import com.enigma.tokonyadia.service.AuthService;
 import com.enigma.tokonyadia.service.RoleService;
 import com.enigma.tokonyadia.utils.constant.Eroll;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Slf4j
 public class AuthServiceImpl implements AuthService {
     private PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
@@ -32,17 +37,18 @@ public class AuthServiceImpl implements AuthService {
         this.jwtUtils = jwtUtils;
         this.authenticationManager = authenticationManager;
     }
+
     @Override
     public UserRespon register(AuthRequest authRequest) {
         Role roleCustomer = rollService.getOrSave(Eroll.ROLE_CUSTOMER);
-        String hashPassword= passwordEncoder.encode(authRequest.getPassword());
+        String hashPassword = passwordEncoder.encode(authRequest.getPassword());
         UserCredential userCredential = UserCredential.builder()
                 .email(authRequest.getEmail())
                 .password(authRequest.getPassword())
                 .roles(List.of(roleCustomer))
                 .build();
         userRepository.saveAndFlush(userCredential);
-        List<String> roles=userCredential.getRoles().stream().map(role->role.getEroll().name()).toList();
+        List<String> roles = userCredential.getRoles().stream().map(role -> role.getEroll().name()).toList();
         return UserRespon.builder()
                 .email(userCredential.getEmail())
                 .roles(roles)
@@ -51,6 +57,27 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String login(AuthRequest request) {
-        return null;
+        try {
+            // user validation
+            Optional<UserCredential> userCredential = userRepository.findByEmail(request.getEmail());
+
+            if (userCredential.isEmpty()){
+                return null;
+            }
+
+            Authentication authenticate = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getEmail(),
+                            request.getPassword()));
+            if (!authenticate.isAuthenticated()){
+                return null;
+            }
+
+            // generate token
+            return jwtUtils.generatedToken(userCredential.get());
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return null;
+        }
     }
 }

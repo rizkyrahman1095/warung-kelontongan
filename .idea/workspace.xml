@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7d5b189d-b421-4869-aca3-acebbce0d7af" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigma/tokonyadia/config/BeanConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigma/tokonyadia/config/BeanConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigma/tokonyadia/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigma/tokonyadia/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigma/tokonyadia/security/JwtAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigma/tokonyadia/security/JwtAuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigma/tokonyadia/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigma/tokonyadia/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/config/JpaConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/config/JpaConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/controller/ControllerToko.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/controller/ControllerToko.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/request/AuthRequest$AuthRequestBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/request/AuthRequest$AuthRequestBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/request/AuthRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/request/AuthRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/ControllerResponse$ControllerResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/ControllerResponse$ControllerResponseBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/JwtClaim$JwtClaimBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/JwtClaim$JwtClaimBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/JwtClaim.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/JwtClaim.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/UserRespon$UserResponBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/UserRespon$UserResponBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/UserRespon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/dto/response/UserRespon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/entity/Role$RoleBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/entity/Role$RoleBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/entity/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/entity/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/entity/UserCredential$UserCredentialBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/entity/UserCredential$UserCredentialBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/entity/UserCredential.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/entity/UserCredential.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/security/JwtUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/security/JwtUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/service/impl/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/service/impl/AuthServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/utils/spesification/CustomerSpesification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/utils/spesification/CustomerSpesification.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/utils/spesification/ProductSpecification.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/enigma/tokonyadia/utils/spesification/ProductSpecification.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2cjMgvbN40K34LdTJVGRmCoMF4y" />
+  <component name="ProjectViewState">
+    <option name="compactDirectories" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "5490622988bc55e094b13789d9003548",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="TokonyadiaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="tokonyadia" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.enigma.tokonyadia.TokonyadiaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7d5b189d-b421-4869-aca3-acebbce0d7af" name="Changes" comment="" />
+      <created>1708620651720</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708620651720</updated>
+      <workItem from="1708620654584" duration="38000" />
+      <workItem from="1708620717397" duration="27000" />
+      <workItem from="1708620763321" duration="3301000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
