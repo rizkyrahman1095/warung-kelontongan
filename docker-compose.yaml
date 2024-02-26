@@ -13,6 +13,7 @@ services:
 
   spring-app:
     image: warung-kelontong:latest
+    build: ./
     container_name: spring-app-container
     depends_on:
       - mysql
