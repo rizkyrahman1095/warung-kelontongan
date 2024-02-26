@@ -5,5 +5,5 @@ import com.enigma.tokonyadia.entity.Purchase;
 import org.springframework.http.ResponseEntity;
 
 public interface PurchaseService {
-    ResponseEntity<?> saveTransaction(PurchaseDto purchase);
+    ResponseEntity<?> saveTransaction(PurchaseDto purchaseDto);
 }

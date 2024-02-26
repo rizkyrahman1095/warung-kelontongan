@@ -1,17 +1,14 @@
 package com.enigma.tokonyadia.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "t_purchase_detail")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Builder
+@Data
 public class PurchaseDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

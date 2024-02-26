@@ -3,6 +3,7 @@ package com.enigma.tokonyadia.service.impl;
 import com.enigma.tokonyadia.dto.request.CustomerDto;
 import com.enigma.tokonyadia.dto.request.ProductDto;
 import com.enigma.tokonyadia.dto.response.ControllerResponse;
+import com.enigma.tokonyadia.dto.response.PageResponseWrapper;
 import com.enigma.tokonyadia.entity.Customer;
 import com.enigma.tokonyadia.entity.Product;
 import com.enigma.tokonyadia.repository.ProductRepository;
@@ -11,7 +12,9 @@ import com.enigma.tokonyadia.service.ProductService;
 import com.enigma.tokonyadia.utils.constant.ApiUrlConstant;
 import com.enigma.tokonyadia.utils.spesification.ProductSpecification;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -88,10 +91,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> getProductPerPage(Pageable pageable, ProductDto productDto) {
+    public ResponseEntity<?> getProductPerPage(Integer page, Integer size, String sortBy, String direction, ProductDto productDto) {
+        Sort sort = Sort.by(Sort.Direction.fromString(direction), sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
         Specification<Product> productSpecification = ProductSpecification.getSpecification(productDto);
-        return productRepository.findAll(productSpecification, pageable);
+        Page<Product> all = productRepository.findAll(productSpecification, pageable);
+        ControllerResponse<Object> data = ControllerResponse.builder()
+                .status("Success")
+                .message("Success get data")
+                .data(new PageResponseWrapper<>(all))
+                .build();
+        return ResponseEntity.ok(data);
     }
+
 
     private Optional<Product> validateId(String id) {
         Optional<Product> optionalProduct = productRepository.findById(id);

@@ -1,16 +1,15 @@
 package com.enigma.tokonyadia.service;
 
 import com.enigma.tokonyadia.dto.request.CustomerDto;
-import com.enigma.tokonyadia.entity.Customer;
+import com.enigma.tokonyadia.dto.request.ProductDto;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
-
 public interface CustomerService {
-    ResponseEntity<?> create(Customer customer);
-    ResponseEntity<?> getAll();
+    ResponseEntity<?> create(CustomerDto customerDto);
     ResponseEntity<?> getById(String id);
-    ResponseEntity<?> update(String id);
+    ResponseEntity<?> update(String id, CustomerDto customerDto);
     ResponseEntity<?> deleteById(String id);
+    ResponseEntity<?> getCustomerPerPage(Integer page, Integer size, String sortBy, String direction, CustomerDto customerDto);
 
 }

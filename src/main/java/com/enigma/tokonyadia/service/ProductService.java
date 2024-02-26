@@ -17,5 +17,5 @@ public interface ProductService {
 
     List<Product> findByName(String name, Integer stock);
 
-    Page<Product> getProductPerPage(Pageable pageable, ProductDto productDto);
+    ResponseEntity<?> getProductPerPage(Integer page, Integer size, String sortBy, String direction, ProductDto productDto);
 }

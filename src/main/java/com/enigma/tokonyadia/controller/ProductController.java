@@ -32,16 +32,13 @@ public class ProductController {
     }
 
     @GetMapping
-    public PageResponseWrapper<Product> getAllProduct(@RequestParam(name = "page", defaultValue = "0") Integer page,
+    public ResponseEntity<?> getAllProduct(@RequestParam(name = "page", defaultValue = "0") Integer page,
                                                       @RequestParam(name = "size", defaultValue = "5") Integer size,
                                                       @RequestParam(name = "sort-by", defaultValue = "name") String sortBy,
                                                       @RequestParam(name = "direction", defaultValue = "ASC") String direction,
                                                       @ModelAttribute ProductDto productDto
                                        ){
-        Sort sort = Sort.by(Sort.Direction.fromString(direction), sortBy);
-        Pageable pageable = PageRequest.of(page, size, sort);
-        Page<Product> resultPage = productService.getProductPerPage(pageable, productDto);
-        return new PageResponseWrapper<>(resultPage);
+        return productService.getProductPerPage(page, size, sortBy, direction, productDto);
     }
 
 
