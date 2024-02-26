@@ -1,35 +1,38 @@
 package com.enigma.tokonyadia.service.impl;
 
+import com.enigma.tokonyadia.dto.request.PurchaseDto;
+import com.enigma.tokonyadia.entity.Customer;
 import com.enigma.tokonyadia.entity.Purchase;
 import com.enigma.tokonyadia.entity.PurchaseDetail;
+import com.enigma.tokonyadia.repository.CustomerRepository;
 import com.enigma.tokonyadia.repository.PurchaseRepository;
+import com.enigma.tokonyadia.service.CustomerService;
+import com.enigma.tokonyadia.service.ProductService;
 import com.enigma.tokonyadia.service.PurchaseDetailService;
 import com.enigma.tokonyadia.service.PurchaseService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class PurchaseServiceImpl implements PurchaseService {
 
     private final PurchaseRepository purchaseRepository;
 
     private final PurchaseDetailService purchaseDetailService;
-
-    public PurchaseServiceImpl(PurchaseRepository purchaseRepository, PurchaseDetailService purchaseDetailService) {
-        this.purchaseRepository = purchaseRepository;
-        this.purchaseDetailService = purchaseDetailService;
-    }
+    private final CustomerRepository customerRepository;
+    private final ProductService productService;
 
     @Override
-    @Transactional
-    public Purchase saveTransaction(Purchase purchase) {
-        Purchase purchase1 = purchaseRepository.save(purchase);
-        for (PurchaseDetail purchaseDetail : purchase.getPurchaseDetails()){
-            purchaseDetail.setPurchase(purchase1);
-            purchaseDetailService.savePurchaseDetail(purchaseDetail);
-        }
-        return purchase1;
+    public ResponseEntity<?> saveTransaction(PurchaseDto purchase) {
+        return null;
     }
 }
+
+

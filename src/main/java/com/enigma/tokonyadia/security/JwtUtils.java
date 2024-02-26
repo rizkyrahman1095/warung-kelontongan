@@ -46,7 +46,7 @@ public class JwtUtils {
         }
     }
 
-    public boolean verifiyJwtToken(String token) {
+    public boolean verifierToken(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC512(secretKey);
             JWTVerifier verifier = JWT.require(algorithm).build();

@@ -1,14 +1,16 @@
 package com.enigma.tokonyadia.service;
 
+import com.enigma.tokonyadia.dto.request.CustomerDto;
 import com.enigma.tokonyadia.entity.Customer;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface CustomerService {
-    Customer create(Customer customer);
-    List<Customer> getAll();
-    Customer getById(String id);
-    Customer update(Customer customer);
-    void deleteById(String id);
+    ResponseEntity<?> create(Customer customer);
+    ResponseEntity<?> getAll();
+    ResponseEntity<?> getById(String id);
+    ResponseEntity<?> update(String id);
+    ResponseEntity<?> deleteById(String id);
 
 }

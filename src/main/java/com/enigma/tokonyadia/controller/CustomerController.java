@@ -2,11 +2,14 @@ package com.enigma.tokonyadia.controller;
 
 import com.enigma.tokonyadia.entity.Customer;
 import com.enigma.tokonyadia.service.CustomerService;
+import com.enigma.tokonyadia.utils.constant.ApiUrlConstant;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(ApiUrlConstant.CUSTOMER)
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -14,31 +17,28 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @PostMapping(path = "/customers")
-    public Customer createNewCustomer(@RequestBody Customer customer) {
-        Customer newCustomer = customerService.create(customer);
-        return newCustomer;
+    @PostMapping
+    public ResponseEntity<?> createNewCustomer(@RequestBody Customer customer) {
+        return customerService.create(customer);
     }
 
-    @GetMapping(path = "/customers")
-    public List<Customer> getAllCustomer() {
-        List<Customer> customers = customerService.getAll();
-        return customers;
+    @GetMapping
+    public ResponseEntity<?> getAllCustomer() {
+        return customerService.getAll();
     }
 
-    @GetMapping(path = "/customers/{id}")
-    public Customer getCustomerById(@PathVariable String id) {
-        Customer customer = customerService.getById(id);
-        return customer;
+    @GetMapping("{id}")
+    public ResponseEntity<?> getCustomerById(@PathVariable String id) {
+        return customerService.getById(id);
     }
 
-    @PutMapping(path = "/customers")
-    public Customer updateCustomer(@RequestBody Customer customer) {
-        Customer updatedCustomer = customerService.update(customer);
-        return updatedCustomer;
+    @PutMapping
+    public ResponseEntity<?> updateCustomer(@RequestBody String id) {
+        return customerService.update(id);
+
     }
 
-    @DeleteMapping(path = "/customers/{id}")
+    @DeleteMapping("{id}")
     public void deleteCustomerById(@PathVariable String id) {
         customerService.deleteById(id);
     }

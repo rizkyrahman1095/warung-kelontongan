@@ -2,10 +2,7 @@ package com.enigma.tokonyadia.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -15,8 +12,8 @@ import java.util.List;
 @Table(name = "t_purchase")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
+@Builder
 public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

@@ -1,4 +1,5 @@
 package com.enigma.tokonyadia.controller;
+
 import com.enigma.tokonyadia.dto.request.AuthRequest;
 import com.enigma.tokonyadia.dto.response.ControllerResponse;
 import com.enigma.tokonyadia.dto.response.UserRespon;
@@ -18,12 +19,23 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register (@RequestBody AuthRequest authRequest){
+    public ResponseEntity<?> register(@RequestBody AuthRequest authRequest) {
         UserRespon userRespon = authService.register(authRequest);
-        ControllerResponse<UserRespon> response= ControllerResponse.<UserRespon>builder()
+        ControllerResponse<UserRespon> response = ControllerResponse.<UserRespon>builder()
                 .status(HttpStatus.CREATED.getReasonPhrase())
                 .message("Success add new user")
                 .data(userRespon)
+                .build();
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
+        String token = authService.login(authRequest);
+        ControllerResponse<String> response = ControllerResponse.<String>builder()
+                .status(HttpStatus.CREATED.getReasonPhrase())
+                .message("Success add new user")
+                .data(token)
                 .build();
         return ResponseEntity.ok(response);
     }

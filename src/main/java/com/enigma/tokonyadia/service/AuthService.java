@@ -7,6 +7,7 @@ import com.enigma.tokonyadia.dto.response.UserRespon;
 public interface AuthService {
 
     UserRespon register(AuthRequest authRequest);
+    UserRespon registerAdmin(AuthRequest authRequest);
     String login(AuthRequest request);
 
 }

@@ -1,5 +1,6 @@
 package com.enigma.tokonyadia.controller;
 
+import com.enigma.tokonyadia.dto.request.PurchaseDto;
 import com.enigma.tokonyadia.entity.Purchase;
 import com.enigma.tokonyadia.service.PurchaseService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class PurchaseController {
     }
 
     @PostMapping("/transactions")
-    public Purchase savePurchase(@RequestBody Purchase purchase){
+    public Purchase savePurchase(@RequestBody PurchaseDto purchase){
         return purchaseService.saveTransaction(purchase);
     }
 }

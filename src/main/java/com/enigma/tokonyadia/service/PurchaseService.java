@@ -1,7 +1,9 @@
 package com.enigma.tokonyadia.service;
 
+import com.enigma.tokonyadia.dto.request.PurchaseDto;
 import com.enigma.tokonyadia.entity.Purchase;
+import org.springframework.http.ResponseEntity;
 
 public interface PurchaseService {
-    Purchase saveTransaction(Purchase purchase);
+    ResponseEntity<?> saveTransaction(PurchaseDto purchase);
 }

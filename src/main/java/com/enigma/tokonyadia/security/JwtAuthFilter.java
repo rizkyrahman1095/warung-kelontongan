@@ -6,8 +6,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,14 +17,16 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
-@AllArgsConstructor
-@NoArgsConstructor
 @Slf4j
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private JwtUtils jwtUtils;
     private UserService userService;
 
+    public JwtAuthFilter(JwtUtils jwtUtils, UserService userService) {
+        this.jwtUtils = jwtUtils;
+        this.userService = userService;
+    }
 
     @Override
     protected void doFilterInternal(
@@ -36,7 +36,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         try {
             String token = parseJwt(request);
-            if (token != null && jwtUtils.verifiyJwtToken(token)) {
+            if (token != null && jwtUtils.verifierToken(token)) {
                 JwtClaim userInfo = jwtUtils.getUserInfoByToken(token);
                 UserDetails userDetails = userService.loadByUserId(userInfo.getUserId());
 
@@ -52,8 +52,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     }
 
     private String parseJwt(HttpServletRequest request) {
-        String token = request.getHeader("Autorization");
-        if (token != null && token.startsWith("bareer")) {
+        String token = request.getHeader("Authorization");
+        if (token != null && token.startsWith("Bearer")) {
             return token.substring(7);
         }
         return null;

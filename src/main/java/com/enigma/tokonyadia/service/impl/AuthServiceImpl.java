@@ -9,8 +9,12 @@ import com.enigma.tokonyadia.security.JwtUtils;
 import com.enigma.tokonyadia.service.AuthService;
 import com.enigma.tokonyadia.service.RoleService;
 import com.enigma.tokonyadia.utils.constant.Eroll;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +42,7 @@ public class AuthServiceImpl implements AuthService {
         String hashPassword= passwordEncoder.encode(authRequest.getPassword());
         UserCredential userCredential = UserCredential.builder()
                 .email(authRequest.getEmail())
-                .password(authRequest.getPassword())
+                .password(hashPassword)
                 .roles(List.of(roleCustomer))
                 .build();
         userRepository.saveAndFlush(userCredential);
@@ -50,7 +54,29 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    public UserRespon registerAdmin(AuthRequest authRequest) {
+        Role roleCustomer =rollService.getOrSave(Eroll.ROLE_CUSTOMER);
+        Role roleAdmin = rollService.getOrSave((Eroll.ROLE_ADMIN));
+        String hasPassword =passwordEncoder.encode((authRequest.getPassword()));
+
+        UserCredential userCredential = UserCredential.builder()
+                .email(authRequest.getEmail())
+                .password(hasPassword)
+                .roles(List.of(roleAdmin,roleCustomer))
+                .build();
+        return UserRespon.builder()
+                .build();
+    }
+
+    @Override
     public String login(AuthRequest request) {
-        return null;
+        Authentication authenticationToken = new UsernamePasswordAuthenticationToken(
+                request.getEmail(),
+                request.getPassword()
+        );
+        Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+        SecurityContextHolder.getContext().setAuthentication(authenticate);
+        UserCredential userCredential = (UserCredential) authenticate.getPrincipal();
+        return jwtUtils.generatedToken(userCredential);
     }
 }

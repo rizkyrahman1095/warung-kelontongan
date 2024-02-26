@@ -1,6 +1,6 @@
 package com.enigma.tokonyadia.controller;
 
-import com.enigma.tokonyadia.dto.request.ProductSearchDTO;
+import com.enigma.tokonyadia.dto.request.ProductDto;
 import com.enigma.tokonyadia.dto.response.ControllerResponse;
 import com.enigma.tokonyadia.dto.response.PageResponseWrapper;
 import com.enigma.tokonyadia.entity.Product;
@@ -28,14 +28,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<?> createNewProduct(@RequestBody Product product){
-        Product product1 = productService.create(product);
-        ControllerResponse<Product> response = ControllerResponse.<Product>builder()
-                .status(HttpStatus.CREATED.getReasonPhrase())
-                .message("Successfully create new product")
-                .data(product1)
-                .build();
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(response);
+       return productService.create(product);
     }
 
     @GetMapping
@@ -43,25 +36,23 @@ public class ProductController {
                                                       @RequestParam(name = "size", defaultValue = "5") Integer size,
                                                       @RequestParam(name = "sort-by", defaultValue = "name") String sortBy,
                                                       @RequestParam(name = "direction", defaultValue = "ASC") String direction,
-                                                      @ModelAttribute ProductSearchDTO productSearchDTO
+                                                      @ModelAttribute ProductDto productDto
                                        ){
         Sort sort = Sort.by(Sort.Direction.fromString(direction), sortBy);
         Pageable pageable = PageRequest.of(page, size, sort);
-        Page<Product> resultPage = productService.getProductPerPage(pageable, productSearchDTO);
+        Page<Product> resultPage = productService.getProductPerPage(pageable, productDto);
         return new PageResponseWrapper<>(resultPage);
     }
 
 
     @GetMapping( "/{id}")
-    public Product getProductById(@PathVariable String id) {
-        Product product = productService.getById(id);
-        return product;
+    public ResponseEntity<?> getProductById(@PathVariable String id) {
+       return productService.getById(id);
     }
 
     @PutMapping
-    public Product updateProduct(@RequestBody Product product) {
-        Product updatedProduct = productService.update(product);
-        return updatedProduct;
+    public ResponseEntity<?> updateProduct(@RequestBody String id) {
+        return productService.update(id);
     }
 
     @DeleteMapping("/{id}")

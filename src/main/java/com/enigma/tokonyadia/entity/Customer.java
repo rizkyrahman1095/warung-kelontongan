@@ -38,5 +38,7 @@ public class Customer {
     @LastModifiedDate
     @Column(columnDefinition="TIMESTAMP")
     private Timestamp updateDate;
+    @OneToOne
+    private UserCredential userCredential;
 
 }
