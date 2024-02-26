@@ -10,7 +10,7 @@ WORKDIR /app
 
 RUN mvn -Dmaven.test.skip=true clean package
 
-FROM openjdk:11-ea-17-jre-slim
+FROM openjdk:17-alpine
 
 MAINTAINER Rizky
 
