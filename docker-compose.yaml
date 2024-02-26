@@ -1,0 +1,24 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: springdb
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: springpassword
+    ports:
+      - "3306:3306"
+
+  spring-app:
+    image: warung-kelontong:latest
+    container_name: spring-app-container
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/springdb
+      SPRING_DATASOURCE_USERNAME: springuser
+      SPRING_DATASOURCE_PASSWORD: springpassword
+    ports:
+      - "8080:8080"
