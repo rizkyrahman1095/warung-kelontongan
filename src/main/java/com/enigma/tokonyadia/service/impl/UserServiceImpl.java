@@ -4,6 +4,8 @@ package com.enigma.tokonyadia.service.impl;
 import com.enigma.tokonyadia.entity.UserCredential;
 import com.enigma.tokonyadia.repository.UserRepository;
 import com.enigma.tokonyadia.service.UserService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,10 +14,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
     public UserCredential loadByUserId(String userId) {

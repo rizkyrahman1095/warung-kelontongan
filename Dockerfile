@@ -1,4 +1,4 @@
-FROM maven:3.8.4-openjdk-17-slim AS builder
+FROM dvmarques/openjdk-17-jdk-alpine-with-timezone AS builder
 
 RUN mkdir -p /app
 

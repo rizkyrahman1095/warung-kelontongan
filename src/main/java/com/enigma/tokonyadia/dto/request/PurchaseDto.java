@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Data
 @Builder
 public class PurchaseDto {
-    private Date purchaseDate;
-    private String customerId;
-    private List<PurchaseDetailDto> purchaseDetailDtoList =new ArrayList<>();
+    private final Date purchaseDate;
+    private final String customerId;
+    private final List<PurchaseDetailDto> purchaseDetailDtoList =new ArrayList<>();
 }
